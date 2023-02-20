@@ -98,3 +98,16 @@ do {
 }
 ```
 
+To save data into the Core Data:
+```swift
+let newPerson = Person(context: self.context)
+newPerson.name = "Aman"
+newPerson.age = 22
+newPerson.gender = "Male"
+
+do{
+    try self.context.save()
+} catch {
+    print("Error in saving the data")
+}
+```
