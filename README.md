@@ -47,3 +47,34 @@ Summary:
 + from persistent container you get a managed object context.
 + through object context we can create and store objects ,etc.. for retrieval for later use.
 
+# Project Work
+
+![Simulator Screen Shot - iPhone 11 - 2023-02-20 at 15 13 25](https://user-images.githubusercontent.com/63160825/220070187-c1dde846-76ee-4329-a4ce-0cf246a05ff6.png)
+
+Working with core data, follow the following steps:
++ Define the entities and attributes
++ Generate Classes in the Model
++ Get a reference to the Core Data persistent container.
++ Get the managed object context.
+
+## Define the entities and attributes
+
+When creating the entity in .xcdatamodel file, we come across different section and one of them is CodeGen. While defining the CodeGen as Class Definition it will automatically creates your database file and they are not visible so we can’t change it, that is why we use Manually so that those files are visible.
+As if want to add custom logic or custom method we can apply then. In short in Manual we have full control, in class definition we have no control and in category/ Extension will generate half of it for you. 
+
+## Generate Classes in the Model
+
+Editor -> Create NSManagedObject  Subclass… and creates files
+As we can see we get new files added which are the NSManagedObject file and its extension, we get these file selecting the CodeGen value is Manually so that we can make changes and add custom logic. If we would select the CodeGen method as Class Definition then these NSManagedObject files would not be visible and they will be behind the scene. Working would be the same in both CodeGen category but the drawback of class definition option is that we can’t manually change or add the custom logic or method.
+And last if selected Category/Extension option than it will create half part visible so that you can modify and other half part un-visible.
+
+## Get a reference to the Core Data persistent container.
+
+In App Delegate we will notice it has created a persistentContainer with name of our data, so that we can access the persistent container from any VC. 
+To access the persistent container from the app delegate and manage object context by ".viewContext"
+ (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+As we know we can’t use Persistent Container directly so we use .viewContext to access the Persistent Container.
+In the app delegate we have another method that is saveContext Method which is helping us in getting reference to the managed object context and detecting if there has been any changes  to the data and then saving.
+Alright, so when we start new Xcode project and we enable core data from the back, we get the core data file included in the App Delegate we have the method to access the Core Data persistent container and managed the object context.  
+
+## Get the managed object context.
