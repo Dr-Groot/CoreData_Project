@@ -78,3 +78,23 @@ In the app delegate we have another method that is saveContext Method which is h
 Alright, so when we start new Xcode project and we enable core data from the back, we get the core data file included in the App Delegate we have the method to access the Core Data persistent container and managed the object context.  
 
 ## Get the managed object context.
+
+To access the view context of Persistent Container:
+```swift
+let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+```
+
+To fetch data from the CoreData:
+```swift
+var items: [Person]?
+
+// Person is a NSManagedObject Class that holds some properties.
+do {
+    let request = Person.fetchRequest() as NSFetchRequest<Person>
+    self.items = try context.fetch(request)
+    print(self.items)
+} catch {
+    print("Unable to fetch request")
+}
+```
+
