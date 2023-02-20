@@ -79,12 +79,13 @@ Alright, so when we start new Xcode project and we enable core data from the bac
 
 ## Get the managed object context.
 
-To access the view context of Persistent Container:
+Access the view context of Persistent Container:
 ```swift
 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 ```
 
-To fetch data from the CoreData:
+
+Fetch data from the CoreData:
 ```swift
 var items: [Person]?
 
@@ -98,7 +99,8 @@ do {
 }
 ```
 
-To save data into the Core Data:
+
+Save data into the Core Data:
 ```swift
 let newPerson = Person(context: self.context)
 newPerson.name = "Aman"
@@ -107,7 +109,35 @@ newPerson.gender = "Male"
 
 do{
     try self.context.save()
-} catch {
+  } catch {
     print("Error in saving the data")
-}
+ }
+```
+
+
+Edit Core Data:
+```swift
+let person = self.items![indexPath.row]
+ 
+person.name = "Alpha"
+person.age = 20
+person.gender = "Male"
+
+do{
+    try self.context.save()
+  } catch {
+    print("Error in saving the data")
+ }
+```
+
+
+Delete Core Data:
+```swift
+ let personToRemove = self.items![indexPath.row]
+ self.context.delete(personToRemove)
+ do {
+     try self.context.save()
+    } catch {
+     print("Error in saving data while deleting")
+ }
 ```
