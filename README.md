@@ -81,7 +81,8 @@ Alright, so when we start new Xcode project and we enable core data from the bac
 
 Access the view context of Persistent Container:
 ```swift
-let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+let context = (UIApplication.shared.delegate as! AppDelegate)
+               .persistentContainer.viewContext
 ```
 
 
